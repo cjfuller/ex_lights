@@ -76,9 +76,9 @@ defmodule Lights do
   end
 
   def lights_fn do
-    send :timer, {:today, 8, 0, fn -> send :main, {:digital_write, 7, 1} end}
-    send :timer, {:today, 20, 0, fn -> send :main, {:digital_write, 7, 0} end}
-    send :timer, {:tomorrow, 0, 1, &lights_fn/0}
+    send :lights_timer, {:today, 8, 0, fn -> send :main, {:digital_write, 7, 1} end}
+    send :lights_timer, {:today, 20, 0, fn -> send :main, {:digital_write, 7, 0} end}
+    send :lights_timer, {:tomorrow, 0, 1, &lights_fn/0}
   end
 
   def init do
