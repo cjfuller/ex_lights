@@ -90,5 +90,7 @@ defmodule Lights do
 
     main = spawn &main_loop/0
     Process.register(main, :lights)
+
+    send :timer, {:tomorrow, 0, 1, &lights_fn/0}
   end
 end
